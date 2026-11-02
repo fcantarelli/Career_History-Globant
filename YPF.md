@@ -1,255 +1,235 @@
-# Enterprise Application Transformation & Digital Visitor Management
-## YPF | Visitor Management System — Phase III
+# AI-Enabled Digital Visitor Management & Security Transformation
+## YPF — Visitor Management System | Phase III
 
-**Client:** YPF  
-**Engagement:** Visitor Management System — Phase III  
-**Role Perspective:** Digital Transformation Consultant / Solution Architecture & Business Analysis  
-**Delivery Approach:** Agile Development / Sprint-Based Requirements Engineering  
-**Technology Context:** Enterprise Applications, Microsoft Azure, Azure AI (historical technology context), Skype Integration, Automated Reporting
+### Project Overview
+
+Phase III of YPF’s Visitor Management initiative focused on enhancing visitor registration, access control, security reporting, and operational efficiency through enterprise application improvements and AI-enabled security capabilities.
+
+The project included the implementation of **AI-based facial recognition systems**, helping optimize security processes while supporting compliance with strict security policies and organizational directives.
+
+The solution combined visitor-management workflows, identity-related information, automated reporting, and security-oriented AI capabilities within an enterprise environment.
+
+> **Project context:** Historical implementation using the Azure AI capabilities available at the time.
 
 ---
 
-## 1. Executive Overview
+## 1. Business Context & Objectives
 
-Participated in the Phase III evolution of YPF's Visitor Management System (Gestión de Visitas), an enterprise application designed to support visitor registration, reception operations, host notifications, and security-related processes.
+The initiative addressed operational and security requirements associated with managing visitors in a corporate environment.
 
-The engagement focused on translating operational and security requirements into functional enhancements, improving user experience, automating reporting workflows, and extending application capabilities across different user roles.
+Key objectives included:
 
-The Sprint 1 scope involved requirements analysis, functional specification, application behavior assessment, and the definition of enhancements addressing visitor identity management, communication integration, reporting automation, and security information accessibility.
+- Streamline visitor registration and access-related workflows.
+- Improve identity-related security processes through AI-based facial recognition.
+- Strengthen security monitoring and visitor traceability.
+- Automate recurring security reports.
+- Improve access to reporting capabilities for authorized operational roles.
+- Support compliance with internal security policies and directives.
+- Reduce manual effort across reception and security operations.
 
-The project represented an incremental digital transformation initiative aimed at improving operational efficiency, user experience, and security-related information management.
+---
 
-## 2. Business & Functional Discovery
+## 2. AI & Azure Integration
 
-The Discovery and requirements analysis addressed several operational scenarios involving:
+AI & Azure Integration — Facial Verification
 
-- Visitor registration and identification.
-- Host notification workflows.
-- Reception and security operations.
-- Visitor entry and exit tracking.
-- Security reporting.
-- Role-based access to reporting capabilities.
-- Automated operational reporting.
+The project incorporated AI-based facial verification using a 1:1 matching approach, comparing a visitor’s face against a previously registered photograph.
 
-The requirements were structured around user scenarios, application behavior, business rules, and expected outcomes.
+This capability was integrated into the visitor-management and security workflows using the Azure AI capabilities available at the time.
 
-## 3. Sprint 1 — Functional Scope
+Functional Approach
 
-### 3.1 Communication & Host Notifications
+Capture or obtain the visitor’s facial image during the security workflow.
 
-Extended the existing visitor notification workflow to support Skype notifications in addition to email.
+Compare the captured face against the previously registered reference photograph.
 
-Key requirements included:
+Use facial similarity verification to support identity-related security processes.
 
-- Host notification when a visitor successfully enters the building.
-- Integration of Skype-based notifications into the existing workflow.
-- Configurable notification preferences during event creation.
-- Support for email, Skype, or both notification channels.
-- Preservation of the existing email notification capability.
+Integrate the AI capability into the broader visitor-management solution.
 
-This enhancement focused on improving communication efficiency and reducing dependency on a single notification channel.
+Operate within strict organizational security policies and directives.
 
-### 3.2 Visitor Identity Management & Data Protection
+AI Architecture Perspective
 
-The Discovery identified a requirement to replace the collection and storage of physical identity document photographs with a document identification number.
+The solution followed a facial verification (1:1) pattern, rather than identifying an individual by searching across a database of multiple faces (1 facial identification).
 
-Functional improvements included:
+This distinction is important when describing the system’s architecture, security model, and functional scope.
 
-- Removal of identity document photograph capture.
-- Replacement with an alphanumeric DNI/ID input field.
-- Mandatory validation during visitor data submission.
-- Input validation and error handling.
-- Modification of visitor information consultation screens.
-- Alignment with company requirements regarding identity document data storage.
+Technology context: The implementation used Azure AI capabilities available at the time. The specific Azure service, API version, matching threshold, and biometric-data lifecycle should be documented only if confirmed.
 
-This enhancement represented a privacy-oriented application change, reducing the need to retain physical identity document images.
+---
 
-### 3.3 Application Cache Management
+## 3. Functional Scope — Phase III, Sprint 1
 
-Identified an application behavior affecting the visitor information page, where cached data could return previously loaded content.
+The documented Sprint 1 requirements included the following enhancements:
 
-The requirement focused on:
+### Visitor & Host Notifications
 
-- Disabling the existing cache behavior on the visitor page.
-- Forcing the application to retrieve a fresh page.
-- Improving information freshness and consistency.
+- Notify the host when a visitor successfully enters the building.
+- Support notifications through Skype and email.
+- Allow notification channels to be selected during event creation.
+- Enable both notification options by default.
 
-This change addressed a user-facing application behavior rather than a broader infrastructure-level caching architecture.
+### Identity Data & Visitor Information
 
-### 3.4 Automated Security Reporting
+- Replace the physical DNI image requirement in the visitor request workflow with a mandatory alphanumeric DNI/ID field.
+- Support DNI/ID values up to 50 characters.
+- Make the DNI/ID field optional in the guest lookup page.
+- Remove the previous DNI image dependency from the specified workflows.
 
-Defined requirements for an automated daily security reporting process.
+### Application Cache Management
 
-The proposed functionality involved:
+- Resolve visitor-page behavior caused by cached content.
+- Force the page to load fresh information rather than returning a previously cached page.
 
-- Scheduled execution at 19:00 Argentina time.
-- Weekday execution, excluding Saturdays and Sundays.
-- Identification of visitors who entered the building but had no recorded actual departure time.
-- Automated generation of an Excel report.
-- Email distribution to the designated security mailbox.
-- Inclusion of host, visitor, DNI, scheduled departure, floor, room, and contact information.
-- Delivery of an empty report when no matching records were found.
+### Automated Security Reporting
 
-This enhancement introduced scheduled reporting automation to support security personnel and operational monitoring.
+Implement automatic generation of a daily security report:
 
-### 3.5 Security Reporting & Historical Visitor Tracking
+- Schedule: weekdays at 19:00 Argentina Time.
+- Exclude Saturdays and Sundays.
+- Generate an Excel report containing visitors with an actual entry time but no recorded actual exit time.
+- Email the report to the security mailbox.
+- Send the report even when no matching visitors are found.
 
-Defined a new security reporting interface to provide visibility into visitor activity and recorded attendance.
+### Security Reporting & Visitor History
 
-Functional requirements included:
+Create a dedicated Security Report page supporting:
 
-- Visitor selection.
-- Visitor identification through DNI/ID.
-- Preview of the visitor's most recent selfie.
+- Visitor search.
+- Display of the visitor’s latest selfie and DNI/ID.
 - Date-range selection.
-- Historical visitor attendance information.
-- Event and meeting details.
-- Recorded entry and exit times.
-- On-screen report results.
-- PDF and Excel export capabilities.
+- Visitor and event history.
+- Entry and exit timestamp visibility.
+- PDF and Excel report downloads.
 
-The objective was to improve information accessibility and enable security personnel to retrieve visitor history without relying on manual data extraction.
+### Role-Based Reporting Access
 
-### 3.6 Role-Based Reporting Access
-
-Identified a restriction preventing Receptionist users from accessing reports available to Administrators.
-
-The enhancement required:
-
-- Extending report menu access to the Receptionist role.
-- Enabling report usage under the corresponding authorization model.
-- Improving operational accessibility for reception personnel.
-
-This requirement involved application permissions and role-based functionality.
+- Enable the Receptionist role to access the Reports menu.
+- Provide access to reporting capabilities comparable to those available to the Administrator role, according to the documented requirements.
 
 ---
 
-## 4. Solution Architecture Perspective
+## 4. Conceptual Solution Architecture
 
-The Phase III assessment focused on incremental evolution of an existing enterprise application.
-
-Key architectural considerations included:
-
-- Integration with external communication services.
-- Application workflow enhancement.
-- Identity data handling.
-- Scheduled background processing.
-- Automated report generation and distribution.
-- User-role permissions.
-- Data retrieval and cache behavior.
-- Reporting and export capabilities.
-
-### Conceptual Application Flow
+The following diagram represents the functional architecture and integration boundaries at a conceptual level. It is not a reconstruction of the exact deployed Azure infrastructure.
 
 ```mermaid
 flowchart TD
     Visitor[Visitor]
-    Reception[Reception]
-    GDV[Visitor Management Application]
-    Host[Business Host]
+    Reception[Reception / Front Desk]
+    Host[Host / Employee]
     Security[Security Team]
-    Reports[Reporting Module]
-    Batch[Scheduled Security Report]
-    Email[Email Notification]
-    Skype[Skype Notification]
-    Storage[Visitor Data / Application Storage]
 
-    Visitor --> Reception
-    Reception --> GDV
-    GDV --> Storage
-    GDV --> Host
-    GDV --> Email
-    GDV --> Skype
-    GDV --> Reports
-    Storage --> Reports
-    Storage --> Batch
-    Batch --> Email
-    Reports --> Security
+    VMS[Visitor Management Application]
+
+    AI[Azure AI Facial Recognition]
+    Identity[Visitor Identity Data]
+    Events[Visitor & Event Records]
+
+    Reports[Security Reporting Module]
+    Scheduler[Scheduled Report Job]
+    Email[Email Notifications]
+    Skype[Skype Notifications]
+    Storage[Report / Image Storage]
+
+    Visitor --> VMS
+    Reception --> VMS
+    Host --> VMS
+    Security --> Reports
+
+    VMS --> AI
+    VMS --> Identity
+    VMS --> Events
+
+    Events --> Reports
+    Events --> Scheduler
+    Scheduler --> Reports
+    Reports --> Storage
+    Reports --> Email
+
+    VMS --> Email
+    VMS --> Skype
 ```
 
-*Conceptual functional representation based on the documented requirements, not a verified production architecture.*
+**Architecture considerations:**
+- AI facial recognition is represented as a capability integrated with the visitor-management solution.
+- The diagram does not assert a specific Azure AI API, database, storage service, or network topology.
+- Identity data, biometric information, retention policies, and access permissions require particular attention in security-sensitive implementations.
 
 ---
 
-## 5. Azure & AI Technology Context
+## 5. Security, Privacy & Compliance Considerations
 
-The project took place in the context of Microsoft Azure capabilities and the AI technologies available at that time.
+The project operated under strict security policies and organizational directives.
 
-The technology context is relevant to the broader digital transformation and enterprise application landscape.
+Relevant considerations included:
 
-However, the Sprint 1 requirements document does not explicitly describe an AI-powered feature, model, endpoint, or architecture.
+- Controlled access to visitor information and reports.
+- Appropriate handling of identity-related data.
+- Security-oriented reporting and visitor traceability.
+- Alignment of AI-enabled functionality with organizational security policies.
+- Consideration of data retention and access restrictions.
 
-Therefore, specific AI capabilities, model versions, or implementation responsibilities should be documented separately if confirmed through additional project artifacts.
-
-This distinction preserves the technical accuracy of the case study while acknowledging the historical Azure AI context.
-
----
-
-## 6. Delivery & Requirements Engineering
-
-The Sprint 1 requirements were organized around functional enhancements and operational scenarios.
-
-The documented scope included:
-
-- Business requirements analysis.
-- Functional specification.
-- User experience and application behavior definition.
-- Validation rules and error scenarios.
-- Reporting requirements.
-- Integration requirements.
-- Scheduled process requirements.
-- User-role access requirements.
-
-The requirements were structured to support Agile sprint delivery and implementation planning.
-
-## 7. Business Value & Transformation Outcomes
-
-The identified enhancements targeted several operational improvements:
-
-- Improved host communication.
-- Reduced identity document image retention.
-- Increased information freshness.
-- Automated security reporting.
-- Improved visitor history accessibility.
-- Enhanced reporting capabilities.
-- Expanded operational access for reception personnel.
-- Reduced manual reporting effort.
-- Improved security process visibility.
-
-These represent intended business benefits associated with the documented requirements rather than independently measured implementation outcomes.
+Facial recognition and biometric data are particularly sensitive. The exact consent model, retention controls, data residency, and compliance mechanisms should be documented only when verified against the implementation.
 
 ---
 
-## 8. Professional Contribution
+## 6. Requirements Engineering & Delivery
 
-The engagement involved enterprise application enhancement and functional transformation, connecting business requirements with application behavior, integration capabilities, reporting processes, and operational security needs.
+Phase III Sprint 1 included requirements definition and delivery planning for:
 
-The project provided experience in requirements-driven application evolution, stakeholder-oriented functional analysis, enterprise integration considerations, and Agile delivery.
+- Skype integration.
+- DNI/ID data handling.
+- Cache behavior.
+- Automated security reports.
+- Security reporting and visitor history.
+- Receptionist reporting permissions.
 
-### Core Competencies
-
-`Digital Transformation`  
-`Solution Architecture`  
-`Enterprise Application Architecture`  
-`Business Analysis`  
-`Requirements Engineering`  
-`Agile / Sprint Planning`  
-`Enterprise Integration`  
-`Microsoft Azure`  
-`Azure AI Technology Context`  
-`Application Workflow Design`  
-`Automated Reporting`  
-`Role-Based Access Control`  
-`Data Privacy Considerations`  
-`Visitor Management`  
-`Security Operations`
+The requirements established operational behavior, user-facing functionality, report content, and scheduled execution expectations.
 
 ---
 
-## Confidentiality & Scope Disclaimer
+## 7. Business & Operational Value
 
-This case study summarizes the documented requirements and functional scope of the Visitor Management System — Phase III.
+The project was designed to deliver value across visitor management and security operations:
 
-It does not claim implementation of undocumented features, specific AI models, or measured business outcomes.
+- **Security process optimization:** AI-based facial recognition supported more efficient security workflows.
+- **Operational efficiency:** Automated reports reduced dependency on manual reporting activities.
+- **Improved traceability:** Visitor entry, exit, and event history became central to security reporting.
+- **Enhanced visibility:** Security teams gained dedicated reporting and search capabilities.
+- **Workflow integration:** Skype and email notifications improved host communication.
+- **Access governance:** Reporting permissions were extended to the Receptionist role based on operational requirements.
 
-Proprietary architecture, confidential operational information, and internal implementation details have been excluded.
+These represent intended project benefits; quantified performance improvements were not available in the supplied requirements document.
+
+---
+
+## 8. Professional Experience & Contribution
+
+This project demonstrates experience in:
+
+- Enterprise visitor-management transformation.
+- AI-based facial recognition integration.
+- Azure AI technology adoption in a historical enterprise context.
+- Security-oriented application requirements.
+- Business process automation.
+- Requirements analysis and sprint-level scope definition.
+- Identity and visitor data workflows.
+- Automated reporting and notifications.
+- Enterprise application integration.
+- Security and compliance-aware solution design.
+
+---
+
+## 9. Core Competencies
+
+`AI Integration` · `Azure AI` · `Facial Recognition` · `Solution Architecture` · `Digital Transformation` · `Visitor Management` · `Security Workflows` · `Enterprise Applications` · `Requirements Engineering` · `Process Automation` · `Reporting & Analytics` · `Identity Data Management`
+
+---
+
+## 10. Confidentiality Notice
+
+This case study is a high-level professional summary. It excludes confidential implementation details, proprietary source code, internal security procedures, and sensitive architectural information.
+
+Before publishing client names, project details, or materials derived from internal documentation, confirm that disclosure is permitted by the applicable confidentiality and intellectual-property agreements.
